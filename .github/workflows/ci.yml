@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      # No external services required: Redis and the OpenTelemetry/Jaeger exporter are
+      # both designed to degrade gracefully when unreachable, and SQLite is a local
+      # file created on first run. No credentials of any kind are needed here.
+      - name: Build
+        run: dotnet build PaymentDemo.slnx --configuration Release
+
+      - name: Test
+        run: dotnet test PaymentDemo.slnx --configuration Release --no-build
+
+      # challenges/ is intentionally excluded - its starter projects are meant to fail
+      # their own tests until fixed, so running them here would make "CI is green"
+      # stop meaning anything. See challenges/README.md.

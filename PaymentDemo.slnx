@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/PaymentApi/PaymentApi.csproj" />
+    <Project Path="src/PaymentDemo.Core/PaymentDemo.Core.csproj" />
+    <Project Path="src/ProcessorSimulator/ProcessorSimulator.csproj" />
+    <Project Path="src/TransactionWorker/TransactionWorker.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PaymentApi.Tests/PaymentApi.Tests.csproj" />
+    <Project Path="tests/PaymentDemo.Core.Tests/PaymentDemo.Core.Tests.csproj" />
+    <Project Path="tests/ProcessorSimulator.Tests/ProcessorSimulator.Tests.csproj" />
+    <Project Path="tests/TransactionWorker.Tests/TransactionWorker.Tests.csproj" />
+  </Folder>
+</Solution>
